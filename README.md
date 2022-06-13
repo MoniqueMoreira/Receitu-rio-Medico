@@ -13,7 +13,7 @@ Dentro da pasta Receituario Medico execute em ordem:
 ```
 python manage.py makemigrations
 python manage.py migrate
-python3 manage.py runserver
+python manage.py runserver
 ```
 Vá no navegador e cole:
 ```
