@@ -2,9 +2,10 @@ from django.db import models
 from django.urls import reverse
 
 class clinic(models.Model):
+    
     nome= models.CharField(max_length=255)
     proprietario = models.CharField(max_length=255)
-    cnpj = models.IntegerField(max_length = 14)
+    cnpj = models.IntegerField()
     endereco = models.CharField(max_length=255)
     telefone = models.IntegerField()
 
@@ -21,7 +22,7 @@ class person(models.Model):
     nome= models.CharField(max_length=255)
     nascimento = models.DateField(null=True, blank=True)
     genero = models.CharField(max_length=255)
-    cpf = models.IntegerField(max_length = 11)
+    cpf = models.IntegerField()
 
     class Meta:
         ordering = ['nome']
@@ -33,13 +34,13 @@ class person(models.Model):
         return reverse('person-detail', args=[str(self.id)])
 
 class doctor(person):
-    crm = models.IntegerField(max_length = 6)
+    crm = models.IntegerField()
     especializacao = models.CharField(max_length=255)
     consultorio = models.ManyToManyField(clinic)
  
 
 class patient(person):
-    telefone = models.IntegerField(max_length = 10)
+    telefone = models.IntegerField()
     endereco = models.CharField(max_length=255)
     ocupacao = models.CharField(max_length=255)
 
@@ -60,7 +61,7 @@ class exam(models.Model):
 class medicine(models.Model):
     nome = models.CharField(max_length=255)
     codigo = models.IntegerField()
-    quantidade = models.IntegerField(max_length = 3)
+    quantidade = models.IntegerField()
     via = models.CharField(max_length=255)
 
     class Meta:
